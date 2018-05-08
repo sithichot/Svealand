@@ -10,20 +10,20 @@ public class HashTable {
 		for (int i = 0; i < theList.length; i++) {
 			theList[i] = new LinkedList<Vertex>();
 		}
-
 	}
-	public int size()
-	{
+
+	public int size() {
 		return currentSize;
 	}
-	public List[] getArray()
-	{
+
+	public List[] getArray() {
 		return theList;
 	}
 
 	public void insert(Vertex x) {
-		List<Vertex> whichList = theList[myHash(x.name)]; // insert it to the hashtable, but if the item already exist in
-														// the table, do nothing
+		List<Vertex> whichList = theList[myHash(x.name)]; // insert it to the hashtable, but if the item already exist
+															// in
+															// the table, do nothing
 		if (!whichList.contains(x)) {
 			whichList.add(x);
 		}
@@ -32,13 +32,11 @@ public class HashTable {
 		}
 	}
 
-	/*public void remove(Vertex x) {
-		ListVertex whichList = theList[myHash(x)]; // removes item from hashtable
-		if (whichList.contains(x)) {
-			whichList.remove(x);
-			currentSize--;
-		}
-	}*/
+	/*
+	 * public void remove(Vertex x) { ListVertex whichList = theList[myHash(x)]; //
+	 * removes item from hashtable if (whichList.contains(x)) { whichList.remove(x);
+	 * currentSize--; } }
+	 */
 
 	private void reHash() {
 		List<Vertex>[] oldList = theList;
@@ -75,18 +73,14 @@ public class HashTable {
 		}
 		return false;
 	}
-	
-	public Vertex get(String name)
-	{
+
+	public Vertex get(String name) {
 		List<Vertex> whichList = theList[myHash(name)];
-		for(int i = 0; i < whichList.size();i++)
-		{
-			if(whichList.get(i).name.equals(name))
-			{
+		for (int i = 0; i < whichList.size(); i++) {
+			if (whichList.get(i).name.equals(name)) {
 				return whichList.get(i);
 			}
 		}
 		return null;
 	}
-
 }
